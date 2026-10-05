@@ -1,1 +1,4 @@
-//Project Idea:
+//Project Idea: Organized Shopping List app. Grocery items are organized based on Categories.
+// Dairy, Produce, Deli, Bakery and Meat Departments.
+// App should show the items listed including brand name and type of product and finally the price.
+// App prints out a "shopping" list of items chosen and then finally the total cost of everything combined.
