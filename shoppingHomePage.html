@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Shopping List - Home Page</title>
+        <style>
+            body { background-color:rgb(182, 214, 255); font-family: sans-serif; text-align:left; 
+                margin: 40px auto; padding: 0 16px; }
+            .image { display: block; margin-left: auto; margin-right: auto; text-align: left;}
+            .edit {
+                background-color:darkblue;
+            }
+        </style>
+        <script>
+            const edit = document.getElementById("edit");
+            const deleteBtn = document.getElementById("delete");
+            const goShop = document.getElementById("goShop");
+            const userProfile = document.getElementById("userProfile");
+
+            function goToShoppingList() {
+                // Code to go to the shopping list page
+                <a href="shoppingList.html"></a>
+            }
+
+            function deleteShoppingList() {
+                // Code to delete the shopping list without going to the shopping list page
+                console.log("Delete shopping list when clicked");
+            }
+
+            function goToShoppingPage() {
+                // Code to navigate to the shopping page
+                console.log("Go shopping when clicked");
+            }
+
+            function goToProfile() {
+                // Code to view the user profile by going to the user profile page
+                console.log("View user profile clicked");
+            }
+
+
+            window.addEventListener(load, () => {
+                document.getElementById("edit").addEventListener("click", goToShoppingList);
+                document.getElementById("delete").addEventListener("click", deleteShoppingList);
+                document.getElementById("goShop").addEventListener("click", goToShoppingPage);
+                document.getElementById("userProfile").addEventListener("click", goToProfile);
+                
+            });
+        </script>
+    </head>
+
+    <body>
+        <h1>"Shopping App Name"</h1>
+        <image>
+            <img src="shoppingLogo.png" alt="Shopping Logo" width="300" height="200">
+        </image>
+        <user>
+            <input type = "edit" id = "edit">
+            <input type = "delete" id = "delete">
+            <input type = "goShop" id = "goShop">
+            <input type = "userProfile" id = "userProfile">
+
+        </user>
+    </body>
+
+</html>

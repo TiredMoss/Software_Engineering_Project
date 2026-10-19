@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shopping List</title>
+<style>
+  body { background-color:lightpink; font-family: sans-serif; text-align:left;   margin: 40px auto; padding: 0 16px; }
+  listItem.bought { text-decoration: line-through; color: black; }
+</style>
+</head>
+<body>
+  <h1>Shopping list</h1>
+  <input id="input" placeholder="Add an item">
+  <button id="add">Add</button>
+  <ul id="list"></ul>
+
+<script>
+  const input = document.getElementById("input");
+  const list = document.getElementById("list");
+
+  
+
+  function addItem() {
+    const text = input.value.trim();
+    if (!text) return;
+    const listItem = document.createElement("listItem");
+    listItem.textContent = text;
+    listItem.onclick = () => listItem.classList.toggle("bought");   // click to check off
+    listItem.ondblclick = () => listItem.remove();                // double-click to delete
+    list.appendChild(listItem);
+    input.value = "";
+  }
+
+   document.getElementById("add").onclick = addItem;
+
+
+ 
+  
+  input.onkeydown = e => { if (e.key === "Enter") addItem(); };
+</script>
+</body>
+</html>
