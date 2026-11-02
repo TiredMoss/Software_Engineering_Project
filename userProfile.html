@@ -1,0 +1,51 @@
+<!--Riddhi Patel, Meaghan Frates, Narmeen Salib, Khali Bouyer-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Shopping App - User Profile</title>
+        <style>
+            body {
+                background-color:darkslategray; font-family: sans-serif; color: white;
+                text-align:left; margin: 40px auto; padding: 0 16px;
+            }
+        </style>
+        <script>
+            const saveProfileButton = document.getElementById("saveProfile");
+
+            function saveProfile() {
+                // Code to save the user's profile information
+
+                username.innerHTML = "Name: " + nameInput.value;
+                useremail.innerHTML = "Email: " + emailInput.value;
+                userphone.innerHTML = "Phone Number: " + phoneInput.value;
+                nameInput.value = "";
+                emailInput.value = "";
+                phoneInput.value = "";
+                saved.innerHTML = "Profile information saved successfully!";
+            }
+
+            window.addEventListener("load", () => {
+                document.getElementById("saveProfile").addEventListener("click", saveProfile);
+            });
+        </script>
+    </head>
+    <body>
+        <h1>Profile - Hello, User!</h1>
+        <p>Welcome to your user profile page! Here you can view and edit your personal information.</p>
+        <h3 id="username">Name...     </h3>
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        <br></br>
+        <h3 id="useremail">Email...      </h3>
+        <input type="email" id="emailInput" placeholder="Enter your email">
+        <br></br>
+        <h3 id="userphone">Phone...      </h3>
+        <input type="tel" id="phoneInput" placeholder="Enter your phone number">
+        <br></br>
+        <user>
+            <button id="saveProfile">Save Profile</button>
+        </user>
+        <h4 id="saved"></h4>
+    </body>
+</html>
