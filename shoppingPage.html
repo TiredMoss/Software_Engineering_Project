@@ -8,12 +8,60 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" >
         <style>
             body {
-                background-color:rgb(116, 144, 68); font-family: sans-serif; text-align:left; 
-                margin: 40px auto; padding: 0 16px;
+                background-color:rgb(58, 75, 100); font-family: sans-serif; text-align:left; 
+                margin: 40px auto; padding: 0 16px; color: white;
+            }
+            .card {
+                background-color:rgb(186, 221, 252); 
+            }
+            .hidden {
+                display: none;
+            }
+            .quantity {
+                display: inline-flex;
+                align-items: center;
+                margin-top: 10px;
+                gap: 5px;
+            }
+            .quantity button, .addBtn {
+                font-size: 18px;
+                text-align: center;
+                line-height: 1;
+                background-color: #f0f0f0;
+                cursor: pointer;
             }
         </style>
         <script>
+            let count = 0;
 
+            function addToCart(){
+                const card = event.target.closest(".card");
+                const addBtn = card.querySelector("#btn");
+                addBtn.classList.add("hidden");
+                const quantity = card.querySelector("#quantity");
+                quantity.classList.remove("hidden");
+                const quantityValue = card.querySelector("#quantityValue");
+                quantityValue.textContent = count + 1;
+            }
+
+            function updateQuantity(change){
+                count += change;
+
+                const card = event.target.closest(".card");
+                const quantityValue = card.querySelector("#quantityValue");
+                quantityValue.textContent = count;
+
+                if (count <= 0){
+                    count = 0;
+                    const card = event.target.closest(".card");
+                    const quantity = card.querySelector("#quantity");
+                    quantity.classList.add("hidden");
+                    const addBtn = card.querySelector("#btn");
+                    addBtn.classList.remove("hidden");
+                    quantityValue.textContent = count;
+                }
+            }
+            
         </script>
     </head>
     <body>
@@ -25,36 +73,279 @@
         <br></br>
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="card">
                         <img src="https://images.albertsons-media.com/is/image/ABS/960564035-C1N1?$ng-ecom-pdp-desktop$&defaultImage=Not_Available" class="card-img-top" alt="Item 1" width="200" height=100% object-fit="cover" 
                         overflow="hidden">
                         <div class="card-body">
                             <h5 class="card-title">Grapes</h5>
-                            <p class="card-text">$10.00</p>
-                            <button class="btn btn-primary">Add to Cart</button>
+                            <p class="card-text">$6.99</p>
+                            <button id="btn" class="addBtn" onclick="addToCart()">Add to Cart</button>
+                            <div id="quantity" class="quantities hidden">
+                                <button onclick="updateQuantity(-1)">-</button>
+                                <span id="quantityValue">1</span>
+                                <button onclick="updateQuantity(1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br></br>
+                    <div class="card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoEjGCnoRWCN1MtEoQUz-verecQlteN5YvLd4w6XH7-A&s=10" class="card-img-top" alt="Item 1" width="200" height=100% object-fit="cover" 
+                        overflow="hidden">
+                        <div class="card-body">
+                            <h5 class="card-title">Fruity Pebbles</h5>
+                            <p class="card-text">$4.29</p>
+                            <button id="btn" class="addBtn" onclick="addToCart()">Add to Cart</button>
+                            <div id="quantity" class="quantities hidden">
+                                <button onclick="updateQuantity(-1)">-</button>
+                                <span id="quantityValue">1</span>
+                                <button onclick="updateQuantity(1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br></br>
+                    <div class="card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGOXJohINXPKzAxZyhTntDNYYabdUUpXTqFSwTqtfrGQ&s=10" class="card-img-top" alt="Item 1" width="200" height=100% object-fit="cover" 
+                        overflow="hidden">
+                        <div class="card-body">
+                            <h5 class="card-title">Eggs</h5>
+                            <p class="card-text">$2.99</p>
+                            <button id="btn" class="addBtn" onclick="addToCart()">Add to Cart</button>
+                            <div id="quantity" class="quantities hidden">
+                                <button onclick="updateQuantity(-1)">-</button>
+                                <span id="quantityValue">1</span>
+                                <button onclick="updateQuantity(1)">+</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="card">
                         <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTxshChzC17IWk5-u7QEqMzyBch6XCpUPrq0LymJt_vW3qnkeCvi0fjFuQKZ-CVVw5281_YMbRv8ngCzsP2_YJ9A5vYJGJWU0jDWtECrYg5TFbNRusUO8bcew&usqp=CAc"
                          class="card-img-top" alt="Item 2" width="200" height=100% object-fit="cover" overflow="hidden">
                         <div class="card-body">
                             <h5 class="card-title">Roses</h5>
-                            <p class="card-text">$15.00</p>
-                            <button class="btn btn-primary">Add to Cart</button>
+                            <p class="card-text">$12.99</p>
+                            <button id="btn" class="addBtn" onclick="addToCart()">Add to Cart</button>
+                            <div id="quantity" class="quantities hidden">
+                                <button onclick="updateQuantity(-1)">-</button>
+                                <span id="quantityValue">1</span>
+                                <button onclick="updateQuantity(1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br></br>
+                    <div class="card">
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSbScgoT9ASkdfRpr8DlouhrezG5sxt2-ijnL8_FWSA_lRdL29wznklYz680WSoYdw35E3CVi1fwSIjDUIl0Jw0LYPu6m3s6PG6UlMyRAILq7ADZ1ojOd3tbYFzslZnmuZA-hSxBQ&usqp=CAc" class="card-img-top" alt="Item 1" width="200" height=100% object-fit="cover" 
+                        overflow="hidden">
+                        <div class="card-body">
+                            <h5 class="card-title">Whole Milk</h5>
+                            <p class="card-text">$3.39</p>
+                            <button id="btn" class="addBtn" onclick="addToCart()">Add to Cart</button>
+                            <div id="quantity" class="quantities hidden">
+                                <button onclick="updateQuantity(-1)">-</button>
+                                <span id="quantityValue">1</span>
+                                <button onclick="updateQuantity(1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br></br>
+                    <div class="card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4JWc5ehxbZczdUrxiwECFjoB3xBPgUzJjXlrTkYjs7g&s=10" class="card-img-top" alt="Item 1" width="200" height=100% object-fit="cover" 
+                        overflow="hidden">
+                        <div class="card-body">
+                            <h5 class="card-title">Carrots</h5>
+                            <p class="card-text">$2.49</p>
+                            <button id="btn" class="addBtn" onclick="addToCart()">Add to Cart</button>
+                            <div id="quantity" class="quantities hidden">
+                                <button onclick="updateQuantity(-1)">-</button>
+                                <span id="quantityValue">1</span>
+                                <button onclick="updateQuantity(1)">+</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="card">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxpTQGquebxktLZmWSIO9eLBYlETmeFhuQIdIpkNF2pQ&s=10" class="card-img-top" alt="Item 3" width="200" height=100% object-fit="cover" 
                         overflow="hidden">
                         <div class="card-body">
                             <h5 class="card-title">Coffee Ice Cream</h5>
-                            <p class="card-text">$20.00</p>
-                            <button class="btn btn-primary">Add to Cart</button>
+                            <p class="card-text">$9.99</p>
+                            <button id="btn" class="addBtn" onclick="addToCart()">Add to Cart</button>
+                            <div id="quantity" class="quantities hidden">
+                                <button onclick="updateQuantity(-1)">-</button>
+                                <span id="quantityValue">1</span>
+                                <button onclick="updateQuantity(1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br></br>
+                    <div class="card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmucw5kzMYsIU8LkPwCbvgWFfkj_r1Gg8AqOHCYSUPfw&s=10" class="card-img-top" alt="Item 1" width="200" height=100% object-fit="cover" 
+                        overflow="hidden">
+                        <div class="card-body">
+                            <h5 class="card-title">Pancakes</h5>
+                            <p class="card-text">$2.99</p>
+                            <button id="btn" class="addBtn" onclick="addToCart()">Add to Cart</button>
+                            <div id="quantity" class="quantities hidden">
+                                <button onclick="updateQuantity(-1)">-</button>
+                                <span id="quantityValue">1</span>
+                                <button onclick="updateQuantity(1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br></br>
+                    <div class="card">
+                        <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQb9QE1S3lk_vN7JtI2gCEl8Hs99ntV9mQ-P-prU2rT2OK9MX9eBFzWgcMwZGEVRVF_AyvNRQtAuGpzcYa-Pwk-uwWufO1tqo3wQJDtDJgSuI_ITBDNtiu4U7aiVj2i6g&usqp=CAc" class="card-img-top" alt="Item 1" width="200" height=100% object-fit="cover" 
+                        overflow="hidden">
+                        <div class="card-body">
+                            <h5 class="card-title">Eggos</h5>
+                            <p class="card-text">$3.99</p>
+                            <button id="btn" class="addBtn" onclick="addToCart()">Add to Cart</button>
+                            <div id="quantity" class="quantities hidden">
+                                <button onclick="updateQuantity(-1)">-</button>
+                                <span id="quantityValue">1</span>
+                                <button onclick="updateQuantity(1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfhwIKFF2arsTlUVDjv1tNHtbtjpvWBiHpXV-oVchJYw&s=10" class="card-img-top" alt="Item 1" width="200" height=100% object-fit="cover" 
+                        overflow="hidden">
+                        <div class="card-body">
+                            <h5 class="card-title">Strawberries</h5>
+                            <p class="card-text">$3.99</p>
+                            <button id="btn" class="addBtn" onclick="addToCart()">Add to Cart</button>
+                            <div id="quantity" class="quantities hidden">
+                                <button onclick="updateQuantity(-1)">-</button>
+                                <span id="quantityValue">1</span>
+                                <button onclick="updateQuantity(1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br></br>
+                    <div class="card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvjwl3tMg1NluZVCmcim00rwrotywfYIuel2BVLdMxoA&s=10" class="card-img-top" alt="Item 1" width="200" height=100% object-fit="cover" 
+                        overflow="hidden">
+                        <div class="card-body">
+                            <h5 class="card-title">Raspberries</h5>
+                            <p class="card-text">$7.99</p>
+                            <button id="btn" class="addBtn" onclick="addToCart()">Add to Cart</button>
+                            <div id="quantity" class="quantities hidden">
+                                <button onclick="updateQuantity(-1)">-</button>
+                                <span id="quantityValue">1</span>
+                                <button onclick="updateQuantity(1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br></br>
+                    <div class="card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmouf1s0cGJyNIZapWf5O8C9FD4Doc901RHv2FKSanhA&s=10" class="card-img-top" alt="Item 1" width="200" height=100% object-fit="cover" 
+                        overflow="hidden">
+                        <div class="card-body">
+                            <h5 class="card-title">Smart Water</h5>
+                            <p class="card-text">$22.99</p>
+                            <button id="btn" class="addBtn" onclick="addToCart()">Add to Cart</button>
+                            <div id="quantity" class="quantities hidden">
+                                <button onclick="updateQuantity(-1)">-</button>
+                                <span id="quantityValue">1</span>
+                                <button onclick="updateQuantity(1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGk2gncjVXVrOlyDNDoT-8y-8h41eGj_bn0H-Qoe2i7w&s=10" class="card-img-top" alt="Item 1" width="200" height=100% object-fit="cover" 
+                        overflow="hidden">
+                        <div class="card-body">
+                            <h5 class="card-title"> Sunny D Orange Juice</h5>
+                            <p class="card-text">$2.99</p>
+                            <button id="btn" class="addBtn" onclick="addToCart()">Add to Cart</button>
+                            <div id="quantity" class="quantities hidden">
+                                <button onclick="updateQuantity(-1)">-</button>
+                                <span id="quantityValue">1</span>
+                                <button onclick="updateQuantity(1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br></br>
+                    <div class="card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1E7sgm5bshY8DazoTKgjXHtQQB6Hi7bxeotQOCkfI_g&s=10" class="card-img-top" alt="Item 1" width="200" height=100% object-fit="cover" 
+                        overflow="hidden">
+                        <div class="card-body">
+                            <h5 class="card-title">Kraft Mac and Cheese</h5>
+                            <p class="card-text">$5.49</p>
+                            <button id="btn" class="addBtn" onclick="addToCart()">Add to Cart</button>
+                            <div id="quantity" class="quantities hidden">
+                                <button onclick="updateQuantity(-1)">-</button>
+                                <span id="quantityValue">1</span>
+                                <button onclick="updateQuantity(1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br></br>
+                    <div class="card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2jd7PmIy1P4qFiHCvG3kwgBVgDgniqPyDLPp-fAPGDg&s=10" class="card-img-top" alt="Item 1" width="200" height=100% object-fit="cover" 
+                        overflow="hidden">
+                        <div class="card-body">
+                            <h5 class="card-title">Chocolate Croissant</h5>
+                            <p class="card-text">$5.99</p>
+                            <button id="btn" class="addBtn" onclick="addToCart()">Add to Cart</button>
+                            <div id="quantity" class="quantities hidden">
+                                <button onclick="updateQuantity(-1)">-</button>
+                                <span id="quantityValue">1</span>
+                                <button onclick="updateQuantity(1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2I-a5ukG90VtoJa5COA1eBmrogDs3RCEjzlBbhbCseQ&s=10" class="card-img-top" alt="Item 1" width="200" height=100% object-fit="cover" 
+                        overflow="hidden">
+                        <div class="card-body">
+                            <h5 class="card-title">Apple Juice</h5>
+                            <p class="card-text">$4.99</p>
+                            <button id="btn" class="addBtn" onclick="addToCart()">Add to Cart</button>
+                            <div id="quantity" class="quantities hidden">
+                                <button onclick="updateQuantity(-1)">-</button>
+                                <span id="quantityValue">1</span>
+                                <button onclick="updateQuantity(1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br></br>
+                    <div class="card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQInkZNiaGdGxbVisPKktlquoe51Y2cnfP7LndysjndQ&s=10" class="card-img-top" alt="Item 1" width="200" height=100% object-fit="cover" 
+                        overflow="hidden">
+                        <div class="card-body">
+                            <h5 class="card-title">Cream Cheese</h5>
+                            <p class="card-text">$4.99</p>
+                            <button id="btn" class="addBtn" onclick="addToCart()">Add to Cart</button>
+                            <div id="quantity" class="quantities hidden">
+                                <button onclick="updateQuantity(-1)">-</button>
+                                <span id="quantityValue">1</span>
+                                <button onclick="updateQuantity(1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br></br>
+                    <div class="card">
+                        <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcT1IhEzU4h8ZrSRFdQKG_HNdg0wG4MIHqV0VtHEmfagp8LIz4lFg3t00-82M2pkV6_nq0ZdN3-h6HdhFYtFYV1ZrLmwF7ftH4vpH4SB_GouBNj91F2aEgrozUI3uC5ZXra59BHdyYI&usqp=CAc" class="card-img-top" alt="Item 1" width="200" height=100% object-fit="cover" 
+                        overflow="hidden">
+                        <div class="card-body">
+                            <h5 class="card-title">Everything Bagels</h5>
+                            <p class="card-text">$5.49</p>
+                            <button id="btn" class="addBtn" onclick="addToCart()">Add to Cart</button>
+                            <div id="quantity" class="quantities hidden">
+                                <button onclick="updateQuantity(-1)">-</button>
+                                <span id="quantityValue">1</span>
+                                <button onclick="updateQuantity(1)">+</button>
+                            </div>
                         </div>
                     </div>
                 </div>
