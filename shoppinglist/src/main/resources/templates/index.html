@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>My Shopping List</title>
+
+    
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>My Shopping List</h1>
+        <a th:href="@{/checkout}">Go toCheckout</a>
+        <a th:href="@{/shopping}">Go to Shopping Page</a>
+        <a th:href="@{/home}">Go to Home Page</a>
+
+        <!-- Form to add an item -->
+        <form action="/items" method="post" class="add-form">
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Add an item..."
+                required>
+
+            <button type="submit">Add</button>
+
+        </form>
+
+        <!-- Display shopping items -->
+        <h2>Your Items</h2>
+
+        <p th:if="${#lists.isEmpty(items)}">
+            Your shopping list is empty.
+        </p>
+
+        <ul>
+
+            <li th:each="item : ${items}"
+                th:classappend="${item.bought} ? 'bought' : ''">
+
+                <span th:text="${item.name}">Milk</span>
+
+                <div class="actions">
+
+                    <!-- Mark as bought or unbought -->
+                    <form th:action="@{/items/{id}/toggle(id=${item.id})}"
+                          method="post">
+
+                        <button type="submit"
+                                class="bought-btn"
+                                th:text="${item.bought} ? 'Undo' : 'Bought'">
+                            Bought
+                        </button>
+
+                    </form>
+
+                    <!-- Delete item -->
+                    <form th:action="@{/items/{id}/delete(id=${item.id})}"
+                          method="post">
+
+                        <button type="submit"
+                                class="delete-btn">
+                            Delete
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+</body>
+</html>
