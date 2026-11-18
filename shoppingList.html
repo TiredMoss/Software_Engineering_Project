@@ -1,4 +1,4 @@
-<!--Riddhi Patel, Meaghan Frates, Narmeen Salib, Khali Bouyer-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,22 +25,22 @@
   
 
   function addItem() {
-    const text = input.value.trim();
+    const text = input.value.trim();     // to remove spaces
     if (!text) return;
-    const listItem = document.createElement("li");
+    const listItem = document.createElement("li");   
     listItem.textContent = text;
     listItem.onclick = () => listItem.classList.toggle("bought");   // click to check off
     listItem.ondblclick = () => listItem.remove();                // double-click to delete
     list.appendChild(listItem);
-    input.value = "";
+    input.value = "";       // clear the input field so the user can add another item
   }
 
-   document.getElementById("add").onclick = addItem;
+   document.getElementById("add").onclick = addItem; //   for more functionality, here one way to add, when the user click the add button the item will be added
 
 
  
   
-  input.onkeydown = e => { if (e.key === "Enter") addItem(); };
+  input.onkeydown = e => { if (e.key === "Enter") addItem(); }; // the second when the user click enter key, to make it easier and faster to use.
 </script>
 </body>
 </html>

@@ -34,15 +34,29 @@
     <body>
         <h1>Profile - Hello, User!</h1>
         <p>Welcome to your user profile page! Here you can view and edit your personal information.</p>
-        <h3 id="username">Name...     </h3>
-        <input type="text" id="nameInput" placeholder="Enter your name">
+        <h3 id="username"> First & Last Name:    </h3>
+        <input type="text"
+               id="nameInput"
+               placeholder="Mary Sue"
+
+        />
         <br></br>
-        <h3 id="useremail">Email...      </h3>
-        <input type="email" id="emailInput" placeholder="Enter your email">
+        <h3 id="useremail">Email Address:      </h3>
+        <input type="email"
+               id="emailInput"
+               placeholder="user@domain"
+        />
         <br></br>
-        <h3 id="userphone">Phone...      </h3>
-        <input type="tel" id="phoneInput" placeholder="Enter your phone number">
-        <br></br>
+        <h3 id="userphone"></h3>
+        <label for="userphone">Phone Number:</label><br/>
+        <input id="phoneInput"
+               name="phone number"
+               type="tel"
+               placeholder="(123)-456-7890"
+               pattern="\d[0-9]{3}-[0-9]{3}-[0-9]{4}"
+               maxlength="12" required
+        />
+        <br><br>
         <user>
             <button id="saveProfile">Save Profile</button>
         </user>
