@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class shoppingHomePage{
     public static void main(String args[]){
@@ -8,10 +10,12 @@ public class shoppingHomePage{
         CardLayout pages = new CardLayout();
         JPanel mainPanel = new JPanel(pages);
         JPanel homePage = new JPanel();
+        Map<String, Integer> cart = new HashMap<>();
+        Map<String, Double> prices = new HashMap<>();
         JPanel shoppingList = new ShoppingList(pages, mainPanel);
-        ShoppingPage shoppingPage = new ShoppingPage(pages, mainPanel);
+        Checkout checkout = new Checkout(pages, mainPanel, cart, prices);
+        ShoppingPage shoppingPage = new ShoppingPage(pages, mainPanel, cart, prices, checkout);
         JPanel userProfile = new UserProfile(pages, mainPanel);
-        JPanel checkout = new Checkout(pages, mainPanel);
 
         JLabel title = new JLabel("Shopping App");
         JButton editList = new JButton("Edit Shopping List");
@@ -24,10 +28,6 @@ public class shoppingHomePage{
         homePage.add(userP);
         
         homePage.setBackground(new Color(182, 214, 255));
-
-        shoppingList.add(new JLabel("My Shopping List"));
-        userProfile.add(new JLabel("My User Profile"));
-        checkout.add(new JLabel("My Checkout Page"));
 
         mainPanel.add(homePage, "Home");
         mainPanel.add(shoppingList, "Shopping List");

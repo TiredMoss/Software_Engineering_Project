@@ -5,7 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ShoppingPage extends JPanel {
-    public ShoppingPage(CardLayout pages, JPanel mainPanel){
+    private Map<String, Integer> cart;
+    private Map<String, Double> prices;
+    public ShoppingPage(CardLayout pages, JPanel mainPanel, Map<String, Integer> cart, Map<String, Double> prices, Checkout checkout){
+        this.cart = cart;
+        this.prices = prices;
         setLayout(new BorderLayout());
 
         JPanel headingPanel = new JPanel();
@@ -47,13 +51,13 @@ public class ShoppingPage extends JPanel {
         add(scroll, BorderLayout.CENTER);
 
         System.out.println("Product Panel Components: " + productPanel.getComponentCount());
-        System.out.println("Scroll Pane Size: " + scroll.getSize());
 
         JButton checkoutButton = new JButton("Checkout");
         checkoutButton.setPreferredSize(new Dimension(50, 30));
         checkoutButton.setFont(new Font("Sans", Font.BOLD, 18));
         checkoutButton.setBackground(new Color(182, 214, 255));
         checkoutButton.addActionListener(e -> {
+            checkout.refreshCart();
             pages.show(mainPanel, "Checkout");
         });
 
@@ -70,8 +74,9 @@ public class ShoppingPage extends JPanel {
         headingPanel.add(back);
     }
 
-    private Map<String, Integer> cart = new HashMap<>();
     private JPanel createProductCard(String name, double price, String imageUrl){
+        prices.put(name, price);
+        
         System.out.println("Creating card for: " + name);
         JPanel card = new JPanel();
         

@@ -1,0 +1,72 @@
+body {
+    background-color: lightpink;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 40px 16px;
+}
+
+.container {
+    background-color: white;
+    max-width: 550px;
+    margin: auto;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+h1 {
+    text-align: center;
+    color: #d45b83;
+}
+
+.add-form {
+    display: flex;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.add-form button {
+    background-color: #d45b83;
+    color: white;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+li.bought span {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.actions {
+    display: inline-flex;
+    gap: 5px;
+    margin-left: 10px;
+}
+
+.bought-btn {
+    background-color: #8bc99b;
+}
+
+.delete-btn {
+    background-color: #f28b82;
+    color: white;
+}
