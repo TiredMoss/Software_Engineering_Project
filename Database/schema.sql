@@ -2,8 +2,10 @@
 CREATE TABLE users (
     user_id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL
 );
+CREATE Extension IF NOT EXISTS "pgcrypto";
 
 -- Table 2: Shopping Lists
 CREATE TABLE shopping_lists (
