@@ -55,6 +55,11 @@ public class ShoppingList extends JPanel {
             }
         });
 
+        JButton back = new JButton("Back to Home");
+        back.addActionListener(e -> {
+            pages.show(mainPanel, "Home");
+        });
+
         JButton clearButton = new JButton("Clear List");
         clearButton.addActionListener(e -> {
             int choice = JOptionPane.showConfirmDialog(this, "Are you sure you want to clear the list?", "Clear List", JOptionPane.YES_NO_OPTION);
@@ -63,15 +68,11 @@ public class ShoppingList extends JPanel {
             }
         });
 
-        JButton back = new JButton("Back to Home");
-        back.addActionListener(e -> {
-            pages.show(mainPanel, "Home");
-        });
+        inputPanel.add(clearButton);
 
         JPanel bottomPanel = new JPanel(new BorderLayout());
         bottomPanel.add(inputPanel, BorderLayout.CENTER);
         bottomPanel.add(back, BorderLayout.SOUTH);
-        bottomPanel.add(clearButton, BorderLayout.SOUTH);
         add(bottomPanel, BorderLayout.SOUTH);
         add(scroll, BorderLayout.CENTER);
     }
