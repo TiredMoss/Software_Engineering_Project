@@ -45,7 +45,7 @@ public class AuthPage extends JPanel {
         JButton loginButton = new JButton("Log In");
         loginButton.addActionListener(e -> logIn());
 
-        panel.add(fields, BorderLayout.CENTER);
+        panel.add(fields, BorderLayout.NORTH);
         panel.add(loginButton, BorderLayout.SOUTH);
         return panel;
     }
